@@ -1,0 +1,9 @@
+Up-to-date installation instructions for Schemix can always be found at:
+http://www.schemix.org/install.html
+
+If your system is well-configured already (kernel source installed and
+configured, etc.) you should just be able to do:
+
+$ cd /usr/src/linux
+$ make SUBDIRS=/path/to/schemix/ modules
+$ make SUBDIRS=/path/to/schemix/ modules_install

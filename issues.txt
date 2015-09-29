@@ -1,0 +1,34 @@
+                This is issues.txt for Schemix-2.4.20
+                =====================================
+
+- The *on-seek* hook is not implemented yet.
+
+- If you put a (display ...) in *on-read*, it will loop infinitely.
+  Each time the user reads something from the device, something
+  more gets displayed and so there is more to read.  This is not
+  actually a bug!
+  What you should do, if you want *on-read* to display something
+  but you don't want a loop, is to make *on-read* display only
+  every other time it is called.
+
+- The assert-type procedure knows all primitive C types, but
+  not structures yet.
+
+- The special form kernel-lambda recognises int and char*.  It will
+  recognise any combination of the two types, up to a maximum of
+  three arguments.  It does, however, assume that all arguments are
+  passed on the stack (asmlinkage) which isn't always the case.
+
+- When you make a kernel function available to Schemix using the
+  kernel-lambda special form, there is no way to see its return value.
+
+- The kernel-lambda special form uses a void* to represent the address
+  of the C function that it captures.  Apparently this is not portable
+  and so will have to be addressed before Schemix will work on
+  architectures other than x86.
+
+- I do not know how far, and in what ways, Schemix differs from R5RS.
+
+
+Please send bug reports and issues to the schemix-devel mailing list,
+at:  http://mail.nongnu.org/mailman/listinfo/schemix-devel

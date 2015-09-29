@@ -1,0 +1,42 @@
+Schemix is a Scheme system, implemented as a patch to the Linux kernel.
+It aims to attain R5RS compliance while remaining small, fast and easy to
+understand.
+
+The intended use of Schemix is for exploration of the Linux kernel and for
+rapid, interactive prototyping of Linux drivers and other new kernel features.
+
+Interactivity is via a character device, /dev/schemix which presents a REPL
+(Read, Eval, Print Loop) to anyone having access to the device.
+
+Schemix is based on a stripped-down and modified version of TinyScheme.
+Currently the system can be successfully compiled into a 2.4.x or 2.5.x
+kernel (as a module or as part of the kernel), which then reads and executes
+Scheme code from /dev/schemix.  Any output is written to /dev/schemix.
+
+The most frequently asked question about Schemix is 'why?'.  This is good.
+People should always ask 'why?' when something gets pushed from user-space
+into kernel-space.  There are two answers:
+
+1) Why Scheme?
+    Scheme is a very safe language.  It doesn't allow you to create arbitrary
+    pointers or over-run buffers.  If you divide by zero, the universe will
+    not end.  This makes it a good language for prototyping, because
+    prototyping is basically the act of making lots of mistakes until,
+    eventually, you make the "right" mistake and call it a finished product.
+
+2) Why in the kernel?
+    The intended uses of Schemix are those where you require quick,
+    interactive access to the kernel's internals.  For example, you might want
+    a new kernel interface that looks like the ones you find in /proc.
+    You could write this interface in C.  Suppose though, that you want to
+    invest very little time in writing the interface, compiling it and getting
+    it up and running.  Suppose further, that you haven't quite decided on
+    the format in which you want the interface to present its information to
+    the outside world, so you'd like to try several different versions before
+    you stick with one.  Suppose you don't want to reboot to get the interface
+    running.  Suppose you only want the interface to exist for a few minutes
+    and then to go away when you are finished using it.
+    This is one example of the kind of thing I'm suggesting people use Schemix
+    for, and you couldn't do it with a Scheme interpreter outside the kernel.
+
+William Bland, April 2003.

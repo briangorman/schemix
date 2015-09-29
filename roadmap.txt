@@ -1,0 +1,44 @@
+Release              Comments/changes
+
+0.1.0 = "2.4.20"     First release of Schemix.
+
+0.2.0                Schemix has a concept of kernel name-spaces
+                     (symbols of the form module-name::symbol-name),
+                     and it builds as a module, or as part of the kernel,
+                     on Linux versions 2.4.x and 2.5.x.
+                     It can optionally use kallsyms and/or devfs.
+                     It understands all primitive C types, and also
+                     supports multidimensional arrays of C types in
+                     a way that is compatable with SRFI 25.
+                     For each independent Scheme interpreter, you can
+                     enable and disable debug messages at run-time.
+                     There is a 'help' function for getting help on
+                     built-in procedures.
+
+0.3.0                Schemix understands all of the kernel structures,
+                     and can define new types of structure, and can
+                     emit C code to define the new structures so that
+                     new modules written in C can use them.
+
+0.4.0                Schemix can make calls to all kernel functions.
+
+0.5.0                Schemix can re-implement one of the hardware drivers.
+
+0.6.0                Schemix can re-implement most things in /proc.
+
+0.7.0                Schemix can insert hooks into kernel functions.
+
+0.8.0                Support is added for floating-point, rational
+                     and complex numbers and bignums.
+
+0.9.0                Schemix is R5RS compliant.
+
+1.0.0                Lots of testing - first stable release.
+
+1.1.0                The "define" special form tries to avoid boxing
+                     and unboxing kernel values whenever it can,
+                     e.g. when there are expressions of the form
+                     (set! kernel::a (+ kernel::b kernel::c)).
+
+1.2.0                The "define" special form compiles some Scheme
+                     code to native machine code for faster execution.
